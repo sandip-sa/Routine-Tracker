@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="33 Day Routine Tracker" />
+  <title>RoutineFlow | 33 Day Routine Tracker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-container">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">PERSONAL PRODUCTIVITY SYSTEM</p>
+        <h1>Routine<span>Flow</span></h1>
+        <p class="hero-text">
+          Build consistency, one day at a time. Track your 33-day routine and stay accountable.
+        </p>
+      </div>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-button" title="Toggle theme" aria-label="Toggle dark mode">
+          ☾
+        </button>
+        <button id="resetButton" class="secondary-button">Reset Progress</button>
+      </div>
+    </header>
+
+    <section class="dashboard">
+      <article class="stat-card">
+        <span class="stat-label">CURRENT DAY</span>
+        <strong id="currentDayStat">Day 1</strong>
+        <small>of 33 days</small>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-label">OVERALL PROGRESS</span>
+        <strong id="overallPercent">0%</strong>
+        <div class="mini-progress">
+          <div id="overallProgressBar"></div>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-label">COMPLETED TASKS</span>
+        <strong id="completedTasks">0 / 0</strong>
+        <small>Keep moving forward</small>
+      </article>
+
+      <article class="quote-card">
+        <span class="quote-mark">“</span>
+        <p id="motivationQuote">Small daily improvements lead to remarkable results.</p>
+      </article>
+    </section>
+
+    <section class="panel routine-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">YOUR DAILY PLAN</p>
+          <h2>Routine Schedule</h2>
+        </div>
+        <button id="openTaskModal" class="primary-button">+ Add Activity</button>
+      </div>
+
+      <div id="routineList" class="routine-list"></div>
+    </section>
+
+    <section class="panel tracker-panel">
+      <div class="panel-heading tracker-heading">
+        <div>
+          <p class="eyebrow">33 DAY CHALLENGE</p>
+          <h2>Daily Completion Tracker</h2>
+        </div>
+
+        <div class="day-selector-wrap">
+          <label for="daySelector">Select Day</label>
+          <select id="daySelector"></select>
+        </div>
+      </div>
+
+      <div class="selected-day-card">
+        <div>
+          <span class="selected-day-label">TRACKING PROGRESS FOR</span>
+          <h3 id="selectedDayTitle">Day 1</h3>
+        </div>
+        <div class="day-progress-info">
+          <strong id="dayProgressText">0 of 0 complete</strong>
+          <div class="day-progress">
+            <div id="dayProgressBar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="dailyChecklist" class="daily-checklist"></div>
+
+      <div class="notes-section">
+        <label for="dailyNotes">Daily reflection / notes</label>
+        <textarea
+          id="dailyNotes"
+          rows="4"
+          placeholder="Write what you studied, what went well, or what you want to improve tomorrow..."
+        ></textarea>
+        <p class="save-text">Your notes are saved automatically.</p>
+      </div>
+    </section>
+
+    <section class="panel overview-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">MONTH OVERVIEW</p>
+          <h2>33-Day Progress Board</h2>
+        </div>
+        <div class="legend">
+          <span><i class="legend-empty"></i> Not started</span>
+          <span><i class="legend-partial"></i> In progress</span>
+          <span><i class="legend-complete"></i> Complete</span>
+        </div>
+      </div>
+
+      <div id="progressGrid" class="progress-grid"></div>
+    </section>
+
+    <footer>
+      <p>RoutineFlow • Stay consistent. Do well. Get well.</p>
+    </footer>
+  </main>
+
+  <div id="taskModal" class="modal hidden">
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close" aria-label="Close modal">×</button>
+
+      <p class="eyebrow">CUSTOMIZE YOUR ROUTINE</p>
+      <h2 id="modalTitle">Add New Activity</h2>
+
+      <form id="taskForm">
+        <input type="hidden" id="editTaskId" />
+
+        <div class="form-group">
+          <label for="taskTime">Time</label>
+          <input id="taskTime" type="text" placeholder="Example: 6:00 - 6:45" required />
+        </div>
+
+        <div class="form-group">
+          <label for="taskActivity">Activity</label>
+          <input id="taskActivity" type="text" placeholder="Example: Mathematics Revision" required />
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelModal" class="secondary-button">Cancel</button>
+          <button type="submit" class="primary-button">Save Activity</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
